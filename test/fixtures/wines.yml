@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: MyText
+  price: 1
+  type: 
+  variety: MyString
+  country: MyString
+  origin: MyString
+  name: MyString
+  vintage: 1
+  taste: 1
+  ranking: 1
+  overview: MyText
+
+two:
+  image: MyText
+  price: 1
+  type: 
+  variety: MyString
+  country: MyString
+  origin: MyString
+  name: MyString
+  vintage: 1
+  taste: 1
+  ranking: 1
+  overview: MyText
