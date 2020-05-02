@@ -12,7 +12,8 @@
 
   <div class="wine_image">
     <%= form.label :image %>
-    <%= form.text_area :image %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="wine_price">

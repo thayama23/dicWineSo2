@@ -18,7 +18,7 @@
 
   <tbody>
       <tr>
-        <td><%= @wine.image %></td>
+        <td><%= image_tag(@wine.image.to_s) %></td>
         <td><%= @wine.price %></td>
         <td><%= @wine.color %></td>
         <td><%= @wine.variety %></td>
