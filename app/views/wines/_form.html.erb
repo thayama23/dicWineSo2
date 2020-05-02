@@ -53,12 +53,12 @@
 
   <div class="wine_taste">
     <%= form.label :taste %>
-    <%= form.number_field :taste %>
+    <%= form.select :taste, Wine.tastes.keys %>
   </div>
 
   <div class="wine_ranking">
     <%= form.label :ranking %>
-    <%= form.number_field :ranking %>
+    <%= form.select :ranking, Wine.rankings.keys %>
   </div>
 
   <div class="wine_overview">
