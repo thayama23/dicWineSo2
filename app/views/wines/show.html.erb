@@ -1,0 +1,36 @@
+<h1>ワイン詳細画面</h1>
+
+
+<table>
+  <tr>
+    <th>画像</th>
+    <th>価格</th>
+    <th>色</th>
+    <th>ぶどう種類</th>
+    <th>原産国</th>
+    <th>生産地</th>
+    <th>名前</th>
+    <th>収穫年</th>
+    <th>味</th>
+    <th>紹介コメント欄</th>
+    <th>評価</th>
+  </tr>
+
+  <tbody>
+      <tr>
+        <td><%= @wine.image %></td>
+        <td><%= @wine.price %></td>
+        <td><%= @wine.color %></td>
+        <td><%= @wine.variety %></td>
+        <td><%= @wine.country %></td>
+        <td><%= @wine.origin %></td>
+        <td><%= @wine.name %></td>
+        <td><%= @wine.vintage %></td>
+        <td><%= @wine.taste %></td>
+        <td><%= @wine.ranking %></td>
+        <td><%= @wine.overview %></td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<%= link_to 'ワインレビュウ一覧画面', wines_path %>

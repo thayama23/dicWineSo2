@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ワインレビュウ一覧</h1>
+<br>
+
+<%= link_to 'ワインレビュウを投稿しよう！', new_wine_path %>
+<table>
+  <tr>
+    <th>画像</th>
+    <th>価格</th>
+    <th>色</th>
+    <th>ぶどう種類</th>
+    <th>原産国</th>
+    <th>生産地</th>
+    <th>名前</th>
+    <th>収穫年</th>
+    <th>味</th>
+    <th>評価</th>
+    <th>紹介コメント欄</th>
+  </tr>
+
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.image %></td>
+        <td><%= wine.price %></td>
+        <td><%= wine.color %></td>
+        <td><%= wine.variety %></td>
+        <td><%= wine.country %></td>
+        <td><%= wine.origin %></td>
+        <td><%= wine.name %></td>
+        <td><%= wine.vintage %></td>
+        <td><%= wine.taste %></td>
+        <td><%= wine.ranking %></td>
+        <td><%= wine.overview %></td>
+        <td><%= link_to "詳細を見よう！", wine_path(wine.id) %></td>
+        <td><%= link_to "レビュウの編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' }  %></td>
+        <td><%= link_to 'レビュウを削除する',wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

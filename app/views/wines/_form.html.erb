@@ -1,0 +1,70 @@
+<%= form_with(model: @wine, local: true ,url: choose_new_or_edit) do |form| %>
+  <% if @wine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @wine.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @wine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="wine_image">
+    <%= form.label :image %>
+    <%= form.text_area :image %>
+  </div>
+
+  <div class="wine_price">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="wine_color">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="wine_variety">
+    <%= form.label :variety %>
+    <%= form.text_field :variety %>
+  </div>
+
+  <div class="wine_country">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="wine_origin">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="wine_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="wine_vintage">
+    <%= form.label :vintage %>
+    <%= form.number_field :vintage %>
+  </div>
+
+  <div class="wine_taste">
+    <%= form.label :taste %>
+    <%= form.number_field :taste %>
+  </div>
+
+  <div class="wine_ranking">
+    <%= form.label :ranking %>
+    <%= form.number_field :ranking %>
+  </div>
+
+  <div class="wine_overview">
+    <%= form.label :overview %>
+    <%= form.text_area :overview %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
