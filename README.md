@@ -74,3 +74,4 @@ https://docs.google.com/document/d/e/2PACX-1vT96j6JrP8uKNGbRXSMGzVrqzorvfvmXSCpe
 - capybara
 - webdrivers
 - cancancan #追加申請
+- rails_admin #追加申請

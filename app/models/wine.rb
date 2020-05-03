@@ -1,4 +1,5 @@
 class Wine < ApplicationRecord
+  belongs_to :user
   
 
   enum taste: {"該当なし": 0, "ライト": 1, "ミディアム": 2, "フル": 3}
