@@ -10,6 +10,7 @@
 <%= link_to 'ワインレビュウを投稿しよう！', new_wine_path %>
 <table>
   <tr>
+    <th>ユーザー</th>
     <th>画像</th>
     <th>価格</th>
     <th>色</th>
@@ -26,6 +27,7 @@
   <tbody>
     <% @wines.each do |wine| %>
       <tr>
+        <td><%= wine.user.name%></td>
         <td><%= image_tag wine.image.to_s %></td>
         <td><%= wine.price %></td>
         <td><%= wine.kind %></td>

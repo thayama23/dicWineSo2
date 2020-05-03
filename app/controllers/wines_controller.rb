@@ -9,6 +9,7 @@ class WinesController < ApplicationController
 
   def create
     @wine = Wine.new(wine_params)
+    @wine.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -51,6 +52,7 @@ class WinesController < ApplicationController
 
   def confirm
     @wine = Wine.new(wine_params)
+    @wine.user_id = current_user.id
     render :new if @wine.invalid?
   end
 
