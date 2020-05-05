@@ -60,13 +60,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  protected
+  def after_update_path_for(resource)
+    user_path(id: current_user.id)
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
-
-  # def edit
-  #   @user = User.find(params[:id])
-  # def edit
 
 end

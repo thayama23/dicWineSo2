@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'wines/index' 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'   
   }
+  # get "users/show" => "users#show"
 
   root 'wines#index'
   resources :wines do

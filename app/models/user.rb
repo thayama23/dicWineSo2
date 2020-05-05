@@ -5,10 +5,14 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }
                     mailRegex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
                     before_validation { email.downcase! }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :new
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+  #      :authentication_keys => [:user_id]
+
+  # validates_uniqueness_of :user_id
+  # validates_presence_of :user_id       
 end
