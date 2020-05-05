@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :wines
+  has_many :favorites, dependent: :destroy
+
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 }
@@ -11,8 +13,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  #      :authentication_keys => [:user_id]
-
-  # validates_uniqueness_of :user_id
-  # validates_presence_of :user_id       
+       
 end
