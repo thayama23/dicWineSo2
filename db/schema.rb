@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 2020_05_05_063359) do
   end
 
   create_table "labellings", force: :cascade do |t|
-    t.integer "wine_id"
-    t.integer "lable_id"
+    t.bigint "wine_id"
+    t.bigint "label_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_labellings_on_label_id"
+    t.index ["wine_id"], name: "index_labellings_on_wine_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -77,5 +79,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_063359) do
     t.index ["user_id"], name: "index_wines_on_user_id"
   end
 
+  add_foreign_key "labellings", "labels"
+  add_foreign_key "labellings", "wines"
   add_foreign_key "wines", "users"
 end
