@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'wines/index' 
+  # get 'wines/index' 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'wines#index'
   resources :wines do
+    resources :comments
     collection do
       post :confirm
     end
