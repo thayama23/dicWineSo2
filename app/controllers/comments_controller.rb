@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_wine, only: [:create, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def create
     @comment = @wine.comments.build(comment_params)
@@ -52,6 +51,6 @@ class CommentsController < ApplicationController
   end
 
   def set_wine
-    @wine = wine.find(params[:wine_id])
+    @wine = Wine.find(params[:wine_id])
   end
 end
