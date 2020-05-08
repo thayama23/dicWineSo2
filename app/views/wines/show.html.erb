@@ -34,3 +34,8 @@
 </table>
 <br>
 <%= link_to 'ワインレビュウ一覧画面', wines_path %>
+
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, wine: @wine } %>
+</div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, wine: @wine } %>

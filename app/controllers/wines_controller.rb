@@ -1,10 +1,10 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   #未ログイン状態でも、ブログの閲覧だけは可能
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
-    @wines = Wine.all
+    @wines = Wine.all.order(created_at: :desc)
   end
 
   def create
@@ -35,6 +35,8 @@ class WinesController < ApplicationController
   end
 
   def show
+    @comments = @wine.comments
+    @comment = @wine.comments.build
   end
 
   def update
