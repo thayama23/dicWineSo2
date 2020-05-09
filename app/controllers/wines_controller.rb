@@ -1,7 +1,7 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   #未ログイン状態でも、ブログの閲覧だけは可能
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index   
     @wines = Wine.all.order(created_at: :desc)
@@ -13,7 +13,7 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
     @wine.user_id = current_user.id
-    binding.irb
+    # binding.irb
     if params[:back]
       render :new
     else
