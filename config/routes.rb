@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
   
 
   if Rails.env.development?
