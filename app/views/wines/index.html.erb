@@ -1,26 +1,49 @@
-<p id="notice"><%= notice %></p>
+
 
 <% if current_user.try(:admin?) %>
   <h1>Wines_admin</h1>
 <% else %>  
-  <h1>ワインレビュウ一覧</h1>
+  <h1>ワインレビュー一覧</h1>
 <% end %>
 <br>
+<%= link_to 'ワインレビューを投稿しよう！', new_wine_path %>
 
-<%= link_to 'ワインレビュウを投稿しよう！', new_wine_path %>
+<%= search_form_for @q do |f| %>
+<ul>
+ <li>
+  <%= f.label :kind, "種類指定" %>
+  <%= f.search_field :kind_cont %>
+
+  <%= f.label :price, "価格" %>
+  <%= f.number_field :price_gteq %>円以上〜
+  <%= f.number_field :price_lt %>円未満
+ </li> 
+
+<li>
+  <%= f.label :ranking, "評価" %>
+  <%= f.select :ranking_eq, [["無評価", 0], ["残念", 1], ["今一", 2], ["まーまー", 3], ["美味しい！", 4], ["最高！", 5]] ,{include_blank: true} %>
+　
+</li>  
+
+ </li>
+  <%= f.submit "検索" %>
+ 
+</ul>
+<% end %>
+
 <table>
   <tr>
-    <th>ユーザー</th>
+    <th><%= sort_link(@q, :name, "ユーザー") %></th>
     <th>画像</th>
-    <th>価格</th>
-    <th>色</th>
-    <th>ぶどう種類</th>
-    <th>原産国</th>
-    <th>生産地</th>
+    <th><%= sort_link(@q, :price, "価格") %></th>
+    <th><%= sort_link(@q, :kind, "種類") %></th>
+    <th><%= sort_link(@q, :variety, "ぶどう品種") %></th>
+    <th><%= sort_link(@q, :country, "原産国") %></th>
+    <th><%= sort_link(@q, :origin, "生産地") %></th>
     <th>名前</th>
-    <th>収穫年</th>
-    <th>味</th>
-    <th>評価</th>
+    <th><%= sort_link(@q, :vintage, "収穫年") %></th>
+    <th><%= sort_link(@q, :taste, "味") %></th>
+    <th><%= sort_link(@q, :ranking, "評価") %></th>
     <th>紹介コメント欄</th>
   </tr>
 

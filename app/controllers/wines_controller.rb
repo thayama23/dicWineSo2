@@ -5,6 +5,9 @@ class WinesController < ApplicationController
 
   def index
     @wines = Wine.all.order(created_at: :desc)
+
+    @q = Wine.ransack(params[:q])
+    @wines = @q.result(distinct: true)
   end
 
   def create
