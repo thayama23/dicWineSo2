@@ -25,7 +25,6 @@
 　
 </li>  
 
- </li>
   <%= f.submit "検索" %>
  
 </ul>
@@ -45,6 +44,7 @@
     <th><%= sort_link(@q, :taste, "味") %></th>
     <th><%= sort_link(@q, :ranking, "評価") %></th>
     <th>紹介コメント欄</th>
+    <th>タグ</th>
   </tr>
 
   <tbody>
@@ -62,6 +62,13 @@
         <td><%= wine.taste %></td>
         <td><%= wine.ranking %></td>
         <td><%= wine.overview %></td>
+
+         <td>
+          <% wine.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
+
         <td><%= link_to "詳細を見よう！", wine_path(wine.id) %></td>
         <td><%= link_to "レビュウの編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' }  %></td>
         <td><%= link_to 'レビュウを削除する',wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>

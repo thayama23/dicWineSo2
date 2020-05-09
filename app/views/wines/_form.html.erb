@@ -66,6 +66,13 @@
     <%= form.text_area :overview %>
   </div>
 
-  <%= form.submit %>
+  <div class="wine_label">
+    <%= form.label :label %>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
 

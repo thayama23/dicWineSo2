@@ -12,6 +12,7 @@
   <%= form.hidden_field :taste %>
   <%= form.hidden_field :ranking %>
   <%= form.hidden_field :overview %>
+  <%= form.hidden_field :label %>
 
   <p>画像:<%= image_tag @wine.image.url %></p>
   <p>価格:<%= @wine.price %></p>
@@ -24,6 +25,7 @@
   <p>味:<%= @wine.taste %></p>
   <p>評価:<%= @wine.ranking %></p>
   <p>紹介コメント欄:<%= @wine.overview %></p>
+  <p>タグ:<%= @wine.label %></p>
   
   <%= form.submit  "投稿する" %>
   <%= form.submit "戻る", name: 'back' %>
