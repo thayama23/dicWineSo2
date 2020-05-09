@@ -3,20 +3,17 @@ class WinesController < ApplicationController
   #未ログイン状態でも、ブログの閲覧だけは可能
   before_action :authenticate_user!
 
-  def index
-    if params[:label_id].present?
-      @wines = @wines.(:labels).where(labels: { id: params[:label_id] })
-    else
-      
-      @q = Wine.ransack(params[:q])
-      @wines = @q.result(distinct: true)
-      @wines = Wine.all.order(created_at: :desc)
-    end
+  def index   
+    @wines = Wine.all.order(created_at: :desc)
+
+    @q = Wine.ransack(params[:q])
+    @wines = @q.result(distinct: true)
   end
 
   def create
     @wine = Wine.new(wine_params)
     @wine.user_id = current_user.id
+    binding.irb
     if params[:back]
       render :new
     else
@@ -44,6 +41,8 @@ class WinesController < ApplicationController
   def show
     @comments = @wine.comments
     @comment = @wine.comments.build
+
+    @favorite = current_user.favorites.find_by(wine_id: @wine.id)
   end
 
   def update

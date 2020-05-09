@@ -24,18 +24,21 @@
   <%= f.select :ranking_eq, [["無評価", 0], ["残念", 1], ["今一", 2], ["まーまー", 3], ["美味しい！", 4], ["最高！", 5]] ,{include_blank: true} %>
 </li>  
 
-  <%= f.submit "検索" %>
-　
-　<li>
-   <%= form_with url: wines_path, method: :get, local: true do |form| %>
-    <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
-    <%= form.submit 'タグ検索', name: nil %>
-   <% end %>
+<li>
+   <% Label.all.each do |label| %>
+  <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+    <label><%= label.name %></label>
+  <% end %>
  </li>
+
+  <%= f.submit "検索" %>
+<% end %>
+
+
 </ul>
 
 
-<% end %>
+
 
 <table>
   <tr>
