@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Label.create!(name: '個人輸入品')
-# Label.create!(name: 'ワイナリー直送')
-# Label.create!(name: 'イベント発掘品')
-# Label.create!(name: '小売店品')
-# Label.create!(name: '超お勧め！')
+Label.create!(name: '個人輸入品')
+Label.create!(name: 'ワイナリー直送')
+Label.create!(name: 'イベント発掘品')
+Label.create!(name: '小売店品')
+Label.create!(name: '超お勧め！')
 
 # 5.times do |n|
 #   name = Faker::Games::Pokemon.name
@@ -32,21 +32,45 @@
   )
 end
 
+5.times do |n|
+  country = Faker::Address.country
+  origin = Faker::Address.city
+  name = Faker::Games::Pokemon.name
 
-# create_table "wines", force: :cascade do |t|
-#   t.text "image"
-#   t.integer "price"
-#   t.string "kind"
-#   t.string "variety"
-#   t.string "country"
-#   t.string "origin"
-#   t.string "name"
-#   t.integer "vintage"
-#   t.integer "taste"
-#   t.integer "ranking"
-#   t.text "overview"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.bigint "user_id"
-#   t.index ["user_id"], name: "index_wines_on_user_id"
-# end
+  # user = User.create(name: "yoyogi1", email: "yoyogi1@example.com", password: "yoyogi1@example.com", )
+  user = User.find(4)
+  user.wines.create!(
+    user_id: 4,
+    image: File.open('./app/assets/images/sample_image.jpeg'),
+    price: (n+1)*1000,
+    kind: "白#{n + 1}",
+    variety: "ソーヴィニヨン#{n + 1}",
+    country: country,
+    origin: origin,
+    name: name,
+    vintage: n+5+1980
+    # ranking: "#{n+1}"
+  )
+end
+
+5.times do |n|
+  country = Faker::Address.country
+  origin = Faker::Address.city
+  name = Faker::Games::Pokemon.name
+
+  user = User.find(5)
+  user.wines.create!(
+    user_id: 5,
+    image: File.open('./app/assets/images/sample_image.jpeg'),
+    price: (n+1)*5000,
+    kind: "赤#{n + 1}",
+    variety: "メルロー#{n + 1}",
+    country: country,
+    origin: origin,
+    name: name,
+    vintage: n*2+1950
+    # ranking: "#{n+1}"
+  )
+end
+
+
