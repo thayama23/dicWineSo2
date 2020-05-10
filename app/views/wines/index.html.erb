@@ -79,13 +79,14 @@
       
 
          <% if current_user.present? %>
+            <td><%= link_to '詳細を確認する', wine_path(wine.id) %></td>
           <% if wine.user_id == current_user.id %>
-              <td><%= link_to '詳細を確認する', wine_path(wine.id) %></td>
+              
               <td><%= link_to "ブログを編集する", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></>
               <td><%= link_to 'ブログを削除する', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
           <% end %>
           <% else %>
-             <td><%= link_to '詳細を確認する', wine_path(wine.id) %></td>
+            <td><%= link_to '詳細を確認する', wine_path(wine.id) %></td>
         <% end %>
 
 
