@@ -4,17 +4,17 @@ class WinesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index   
-    # @wines = Wine.all.order(created_at: :desc)
+    @wines = Wine.all.order(created_at: :desc)
 
     @q = Wine.ransack(params[:q])
     @wines = @q.result(distinct: true)
-    @wines = Wine.all.order(created_at: :desc)
+    # @wines = Wine.all.order(created_at: :desc)
   end
 
   def create
     @wine = Wine.new(wine_params)
     @wine.user_id = current_user.id
-    # binding.irb
+    binding.irb
     if params[:back]
       render :new
     else
@@ -37,6 +37,9 @@ class WinesController < ApplicationController
   end
 
   def edit
+    if current_user.id != @wine.user_id
+      redirect_to wines_path, notice:"他人のブログ編集は出来ません!"     
+    end
   end
 
   def show
@@ -52,11 +55,16 @@ class WinesController < ApplicationController
     else
       render :edit
     end
+    
   end
 
   def destroy
-    @wine.destroy
-    redirect_to wines_path, notice: "レビュウを削除しました！"
+    if current_user.id != @wine.user_id
+      redirect_to wines_path, notice:"他人のブログ削除は出来ません!"     
+    else
+      @wine.destroy
+      redirect_to wines_path, notice: "レビュウを削除しました！"
+    end
   end
 
   def confirm
@@ -73,4 +81,10 @@ class WinesController < ApplicationController
   def wine_params
     params.require(:wine).permit(:image, :image_cache, :price, :kind, :variety, :country, :origin, :name, :vintage, :taste, :ranking, :overview, { label_ids: [] })
   end
+
+  # def logged_in?
+  #   unless current_user.present?
+  #     redirect_to wines_path
+  #   end
+  # end
 end
