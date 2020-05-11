@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :wines
   has_many :favorites, dependent: :destroy
   has_many :favorite_wines, through: :favorites, source: :wine
+  has_many :comments
 
 
   validates :name, presence: true, length: { maximum: 30 }

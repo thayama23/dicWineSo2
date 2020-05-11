@@ -14,7 +14,7 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
     @wine.user_id = current_user.id
-    binding.irb
+    # binding.irb
     if params[:back]
       render :new
     else
@@ -45,8 +45,11 @@ class WinesController < ApplicationController
   def show
     @comments = @wine.comments
     @comment = @wine.comments.build
-
-    @favorite = current_user.favorites.find_by(wine_id: @wine.id)
+    # binding.irb
+    
+    if current_user.present?
+      @favorite = current_user.favorites.find_by(wine_id: @wine.id)
+    end
   end
 
   def update

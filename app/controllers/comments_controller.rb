@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @wine.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
+    # binding.irb
       if @comment.save
         flash.now[:notice] = 'コメントが投稿されました'
         format.js { render :index }
@@ -17,9 +19,14 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = @wine.comments.find(params[:id])
-    respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
-      format.js { render :edit }
+    if current_user.id != @comment.user_id
+        redirect_to wines_path, notice: "他人のコメントは編集出来ません！"
+    else
+      # @comment = @wine.comments.find(params[:id])
+      respond_to do |format|
+        flash.now[:notice] = 'コメントの編集中'
+        format.js { render :edit }
+      end
     end
   end
 
@@ -38,11 +45,16 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    if current_user.id != @comment.user_id
+      redirect_to wines_path, notice: "他人のコメントは編集出来ません！"
+    else
+      # @comment = Comment.find(params[:id])
       @comment.destroy
       respond_to do |format|
-        flash.now[:notice] = 'コメントが削除されました'
-        format.js { render :index }
+          flash.now[:notice] = 'コメントが削除されました'
+          format.js { render :index }
       end
+    end
   end
 
   private
