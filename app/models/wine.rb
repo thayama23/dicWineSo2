@@ -10,5 +10,12 @@ class Wine < ApplicationRecord
   enum ranking: {"残念": 1, "今一": 2, "まーまー": 3, "美味しい！": 4, "最高！": 5}
   mount_uploader :image, ImageUploader
 
+  validates :image, presence: true
   validates :price, presence: true
+  validates :kind, presence: true
+  validates :country, presence: true
+  validates :origin, presence: true
+  validates :name, presence: true
+  validates :vintage, presence: true
+  validates :ranking, presence: true
 end

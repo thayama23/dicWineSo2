@@ -7,8 +7,26 @@ class WinesController < ApplicationController
     @wines = Wine.all.order(created_at: :desc)
 
     @q = Wine.ransack(params[:q])
+    @q.sorts = 'id desc' if @q.sorts.empty? 
+  
     @wines = @q.result(distinct: true)
+
     # @wines = Wine.all.order(created_at: :desc)
+    # if params[:q] == "true"
+    #   @q = Wine.ransack(params[:q])
+    #   @wines = @q.result(distinct: true)
+    # else  
+    #   @wines = Wine.all.order(created_at: :desc)
+    # end 
+    
+    # if params[:q] != nil
+    #   @wines = Wine.all.order(created_at: :desc)
+    # else  
+    #   @q = Wine.ransack(params[:q])
+    #   @wines = @q.result(distinct: true)
+    # end
+
+
   end
 
   def create

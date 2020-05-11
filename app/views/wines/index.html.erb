@@ -8,6 +8,7 @@
 <br>
 <%= link_to 'ワインレビューを投稿しよう！', new_wine_path %>
 
+<%# <%= search_form_for @q do |f| %> 
 <%= search_form_for @q do |f| %>
   <ul>
   <li>
@@ -32,6 +33,10 @@
     </li>
 
     <%= f.submit "検索" %>
+
+    <li>
+    <%= link_to "最新投稿から閲覧", wines_path(sort: "true") %>
+    </li>
   </ul>
 <% end %>
 

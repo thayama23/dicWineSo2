@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_014340) do
+ActiveRecord::Schema.define(version: 2020_05_11_091500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,23 +65,23 @@ ActiveRecord::Schema.define(version: 2020_05_11_014340) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "admin", default: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "wines", force: :cascade do |t|
-    t.text "image"
-    t.integer "price"
-    t.string "kind"
+    t.text "image", null: false
+    t.integer "price", null: false
+    t.string "kind", null: false
     t.string "variety"
-    t.string "country"
-    t.string "origin"
-    t.string "name"
-    t.integer "vintage"
+    t.string "country", null: false
+    t.string "origin", null: false
+    t.string "name", null: false
+    t.integer "vintage", default: 0, null: false
     t.integer "taste"
-    t.integer "ranking"
+    t.integer "ranking", null: false
     t.text "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
