@@ -56,7 +56,7 @@
     <th><%= sort_link(@q, :vintage, "収穫年") %></th>
     <th><%= sort_link(@q, :taste, "味") %></th>
     <th><%= sort_link(@q, :ranking, "評価") %></th>
-    <th>紹介コメント欄</th>
+    <%# <th>紹介コメント欄</th> %>
     <th>タグ</th>
   </tr>
 
@@ -74,7 +74,7 @@
         <td><%= wine.vintage %></td>
         <td><%= wine.taste %></td>
         <td><%= wine.ranking %></td>
-        <td><%= wine.overview %></td>
+        <%# <td><%= wine.overview %></td> 
 
          <td>
           <% wine.labels.each do |label| %>

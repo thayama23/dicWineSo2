@@ -5,15 +5,15 @@
   <tr>
     <th>画像</th>
     <th>価格</th>
-    <th>色</th>
-    <th>ぶどう種類</th>
+    <th>種類</th>
+    <th>ぶどう品種</th>
     <th>原産国</th>
     <th>生産地</th>
     <th>名前</th>
     <th>収穫年</th>
     <th>味</th>
-    <th>紹介コメント欄</th>
-    <th>評価</th>
+    <%# <th>紹介コメント欄</th>
+    <th>評価</th> %>
   </tr>
 
   <tbody>
@@ -27,11 +27,20 @@
         <td><%= @wine.name %></td>
         <td><%= @wine.vintage %></td>
         <td><%= @wine.taste %></td>
-        <td><%= @wine.ranking %></td>
-        <td><%= @wine.overview %></td>
+        <%# <td><%= @wine.ranking %></td>
+        <%# <td><%= @wine.overview %></td> 
       </tr>
   </tbody>
 </table>
+<br>
+<b>評価：</b>
+<%= @wine.ranking %>
+
+<div>
+<b>紹介コメント欄：</b>
+<%= @wine.overview %>
+</div>
+
 <br>
 
   <% if current_user.present?%>

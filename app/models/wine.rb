@@ -18,4 +18,5 @@ class Wine < ApplicationRecord
   validates :name, presence: true
   validates :vintage, presence: true
   validates :ranking, presence: true
+  validates :overview, length: { maximum: 400 }
 end

@@ -14,6 +14,7 @@
       <%= link_to "メインページ", wines_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
+      <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>

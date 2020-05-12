@@ -22,3 +22,16 @@ ja:
         admin: 管理者権限
         created_at: 登録日時
         updated_at: 更新日時   
+      wine:
+        image: 画像  
+        price: 価格
+        kind: 種類
+        variety: ぶどう品種
+        country: 生産国
+        origin: 原産地
+        vintage: 収穫年
+        name: 名前
+        taste: 味
+        ranking: 評価
+        overview: 紹介コメント欄
+        label: タグ
