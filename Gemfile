@@ -35,7 +35,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -49,3 +49,9 @@ gem 'cancancan'
 gem 'jquery-rails'
 gem 'ransack'
 gem 'faker'
+
+gem 'rspec-rails'
+gem 'spring-commands-rspec'
+gem 'factory_bot_rails'
+gem 'launchy'
+gem 'webdrivers'
