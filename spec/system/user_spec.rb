@@ -64,7 +64,6 @@ RSpec.describe 'ユーザー新規登録・ログイン・ログアウト機能'
         fill_in 'user[email]', with: 'admin@example.com'
         fill_in 'user[password]', with: 'admin@example.com'
         click_button 'ログイン'
-
         expect(page).to have_content 'Wines_admin'
       end
     end 
