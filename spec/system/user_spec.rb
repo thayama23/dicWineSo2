@@ -1,5 +1,15 @@
 require 'rails_helper'
 RSpec.describe 'ユーザー新規登録・ログイン・ログアウト機能', type: :system do
+  before do
+    def user_login
+      user = FactoryBot.create(:user)
+      visit new_user_session_path
+      fill_in 'user[email]', with: 'sample@example.com'
+      fill_in 'user[password]', with: 'sample@example.com'
+      click_button 'ログイン'
+    end  
+  end
+
   describe '新規登録のテスト' do
     context '新規登録のテスト' do
       it 'ユーザー新規登録のテスト' do
@@ -14,46 +24,49 @@ RSpec.describe 'ユーザー新規登録・ログイン・ログアウト機能'
     end
   end
 
-  # describe 'セッション機能のテスト' do
-  #   before do
-  #     user = FactoryBot.create(:user)
-  #     admin_user = FactoryBot.create(:admin_user)
-  #   end
-  #   context 'ユーザーが作成されている場合' do
-  #     it 'ログインができること' do
-  #       visit new_session_path
-  #       fill_in 'session[email]', with: 'sample@example.com'
-  #       fill_in 'session[password]', with: '00000000'
-  #       click_button 'Log in'
-  #       expect(current_path).to eq user_path(id: 2)
-  #     end
-  #   end
+  describe 'セッション機能のテスト' do
+    context 'ユーザーが作成されている場合' do
+      it 'ログインができること' do
+        user = FactoryBot.create(:user)
+        visit new_user_session_path
+        fill_in 'user[email]', with: 'sample@example.com'
+        fill_in 'user[password]', with: 'sample@example.com'
+        click_button 'ログイン'
+        expect(page).to have_content 'ログインしました。'
+      end
+    end
 
-  #   context 'ログインされている場合' do
-  #     before do
-  #       visit new_session_path
-  #       fill_in 'session[email]', with: 'sample@example.com'
-  #       fill_in 'session[password]', with: '00000000'
-  #       click_button 'Log in'
+    context 'ログインされている場合' do
+      it '自分の詳細画面(マイページ)に飛べること' do
+        user_login
+        sleep 2
+        visit user_path(id: 1)
+        expect(page).to have_content 'sampleのマイページ'
+      end
 
-  #     end
+      it '他人の詳細画面には入れない' do
+        user2 = FactoryBot.create(:user2)
+        user_login
+        sleep 2
+        visit user_path(id: 2)
+        expect(page).to have_content '他の人のページへアクセスは出来ません!'
+      end
 
-  #     it '自分の詳細画面(マイページ)に飛べること' do
-  #       visit user_path(id: 4)
-  #       expect(current_path).to eq user_path(id: 4)
-  #     end
+      it 'ログアウトができること' do
+        user_login
+        click_link 'ログアウト'
+        expect(page).to have_content 'ログアウトしました。'
+      end
 
-  #     it '一般ユーザーが他人の詳細画面に飛ぶとタスク一覧ページに遷移すること' do
-  #       visit user_path(id: 7)
+      it 'アドミ権限でのログイン機能確認' do
+        admin = FactoryBot.create(:admin)
+        visit new_user_session_path
+        fill_in 'user[email]', with: 'admin@example.com'
+        fill_in 'user[password]', with: 'admin@example.com'
+        click_button 'ログイン'
 
-  #       expect(page).to have_content '他の人のページへアクセスは出来ません!'
-  #     end
-
-  #     it 'ログアウトができること' do
-  #       visit user_path(id: 8)
-  #       click_link 'Logout'
-  #       save_and_open_page
-  #       expect(page).to have_content 'ログアウトしました'
-  #     end
-  #   end
-  end
+        expect(page).to have_content 'Wines_admin'
+      end
+    end 
+  end  
+end
