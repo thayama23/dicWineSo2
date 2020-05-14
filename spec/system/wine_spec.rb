@@ -45,20 +45,54 @@ RSpec.describe 'ワインレビィー機能', type: :system do
         wine2 = FactoryBot.create(:wine2, user: @user)
         user_login2
         visit wines_path
-        binding.irb
         wine_list = all('.wine_row') 
 
         expect(wine_list[0]).to have_content '赤テスト'
         expect(wine_list[1]).to have_content '白テスト'
-
-        # wine = all('.wine_list')
-        # wine_0 = wine[0]
-        # expect(wine_0).to have_content '赤テスト'
       end
     end
   
+    context 'レビュー詳細ページから' do
+      it 'お気に入り指定が出来る' do
+        @user = FactoryBot.create(:user)
+        wine = FactoryBot.create(:wine, user: @user)
+        user_login2
+        visit wines_path
+        sleep 2
+        
+        click_on '詳細確認'
+        click_on 'お気に入り指定する'
+        expect(page).to have_content 'sampleさんのブログをお気に入り登録しました'
+      end
+    end
 
+    context 'レビューへラベル（タグ）付機能' do
+      it 'ラベル（タグ）付機能の確認' do
+        label_create
+        user_login
+        click_on 'ワインレビューを投稿しよう！'
+        
+        attach_file "画像", "./app/assets/images/sample_image.jpeg"
+        fill_in "価格", with: 7001
+        fill_in "種類", with: "スパークリング"
+        fill_in "生産国", with: "USA"
+        fill_in "原産地", with: "アリゾナ"
+        fill_in "名前", with: "アリゾナのスパークリング"
+        binding.irb
+        fill_in "収穫年", with: "1970-01-01"
+        # select ("1970-01-01" from "収穫年")
+        fill_in "評価", with: "最高！"
+
+        find(:css, "#wine_label_ids_1[value='1']").set(true)
+        find(:css, "#wine_label_ids_1[value='2']").set(true)
+        find(:css, "#wine_label_ids_1[value='3']").set(true)
+        find(:css, "#wine_label_ids_1[value='4']").set(true)
+        find(:css, "#wine_label_ids_1[value='5']").set(true)
+        click_on '登録する'
+        
+        expect(page).to have_content "個人輸入品 ワイナリー直送 イベント発掘品 小売店品 超お勧め！"
+
+      end
+    end
   end
-
-
 end
