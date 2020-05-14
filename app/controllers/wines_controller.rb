@@ -56,7 +56,7 @@ class WinesController < ApplicationController
 
   def edit
     if current_user.id != @wine.user_id
-      redirect_to wines_path, notice:"他人のブログ編集は出来ません!"     
+      redirect_to wines_path, notice:"他人のレビューは出来ません!"     
     end
   end
 
@@ -81,7 +81,7 @@ class WinesController < ApplicationController
 
   def destroy
     if current_user.id != @wine.user_id
-      redirect_to wines_path, notice:"他人のブログ削除は出来ません!"     
+      redirect_to wines_path, notice:"他人のレビュー削除は出来ません!"     
     else
       @wine.destroy
       redirect_to wines_path, notice: "レビュウを削除しました！"
