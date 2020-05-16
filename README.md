@@ -73,5 +73,8 @@ https://docs.google.com/document/d/e/2PACX-1vT96j6JrP8uKNGbRXSMGzVrqzorvfvmXSCpe
 - launchy
 - capybara
 - webdrivers
-- cancancan #追加申請
-- rails_admin #追加申請
+- cancancan
+- rails_admin 
+- jquery-rails
+- dotenv-rails
+- database_rewinder

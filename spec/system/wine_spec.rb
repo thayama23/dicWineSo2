@@ -79,7 +79,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
         click_button 'ログイン'
         # binding.irb
         sleep 1
-        click_on 'レビュー編集'
+        click_on '編集'
         sleep 1
         page.accept_alert
       
