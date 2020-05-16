@@ -1,13 +1,18 @@
 require 'rails_helper'
 RSpec.describe 'ワインレビィー機能', type: :system do
   before do
-    def user_login
+    # def user_login
+    #   @user = FactoryBot.create(:user)
+    #   visit new_user_session_path
+    #   fill_in 'user[email]', with: 'sample@example.com'
+    #   fill_in 'user[password]', with: 'sample@example.com'
+    #   click_button 'ログイン'
+    # end 
+
+    def create_user_wine
       @user = FactoryBot.create(:user)
-      visit new_user_session_path
-      fill_in 'user[email]', with: 'sample@example.com'
-      fill_in 'user[password]', with: 'sample@example.com'
-      click_button 'ログイン'
-    end 
+      wine = FactoryBot.create(:wine, user: @user)
+    end
 
     def user_login2
       @user2 = FactoryBot.create(:user2)
@@ -29,8 +34,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
   describe 'ワインレビュー一覧画面' do
     context 'ワインレビューを作成した場合' do
       it '作成済みのワインレビューが表示される' do
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         user_login2
         visit wines_path
         
@@ -40,8 +44,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
 
     context '複数のレビューを作成した場合' do
       it 'レビューが作成日時の降順に並んでいる事' do
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         wine2 = FactoryBot.create(:wine2, user: @user)
         user_login2
         visit wines_path
@@ -54,8 +57,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
   
     context 'レビュー詳細ページから' do
       it 'お気に入り指定が出来る' do
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         user_login2
         visit wines_path
         sleep 2
@@ -69,14 +71,15 @@ RSpec.describe 'ワインレビィー機能', type: :system do
     context 'ラベル（タグ）付及び編集機能' do
       it 'ラベル（タグ）付機能及び編集の確認' do
         label_create
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         visit wines_path
         click_on 'ログイン'
         fill_in 'user[email]', with: 'sample@example.com'
         fill_in 'user[password]', with: 'sample@example.com'
         click_button 'ログイン'
-      　click_on 'レビュー編集'
+        # binding.irb
+        sleep 1
+        click_on 'レビュー編集'
         sleep 1
         page.accept_alert
       
@@ -93,22 +96,9 @@ RSpec.describe 'ワインレビィー機能', type: :system do
   end
 
   describe '検索機能の確認' do
-    # before do
-    #   @user = FactoryBot.create(:user)
-    #   wine = FactoryBot.create(:wine, user: @user)
-    #   wine2 = FactoryBot.create(:wine2, user: @user)
-    #   user_login2
-    #   visit wines_path
-    #   wine_list = all('.wine_row') 
-
-    #   expect(wine_list[0]).to have_content '赤テスト'
-    #   expect(wine_list[1]).to have_content '白テスト'
-    # end
-
     context 'ワイン種類指定で検索' do
       it '指定種類が表示される' do
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         wine2 = FactoryBot.create(:wine2, user: @user)
         user_login2
         visit wines_path
@@ -122,8 +112,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
 
     context 'ワイン種類指定で検索' do
       it '"評価"での検索確認' do
-        @user = FactoryBot.create(:user)
-        wine = FactoryBot.create(:wine, user: @user)
+        create_user_wine
         wine2 = FactoryBot.create(:wine2, user: @user)
         user_login2
         visit wines_path

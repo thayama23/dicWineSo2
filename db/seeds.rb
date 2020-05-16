@@ -5,11 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Label.create!(name: '個人輸入品')
-Label.create!(name: 'ワイナリー直送')
-Label.create!(name: 'イベント発掘品')
-Label.create!(name: '小売店品')
-Label.create!(name: '超お勧め！')
 
 # 5.times do |n|
 #   name = Faker::Games::Pokemon.name
@@ -22,6 +17,21 @@ Label.create!(name: '超お勧め！')
 #                photo: File.open('./app/assets/images/default_user.jpg')
 #                )
 # end
+
+Label.create!(name: '個人輸入品')
+Label.create!(name: 'ワイナリー直送')
+Label.create!(name: 'イベント発掘品')
+Label.create!(name: '小売店品')
+Label.create!(name: '超お勧め！')
+
+User.create(
+  name: "admin_user",
+  email: "admin_user@example.com",
+  password: "admin_user@example.com",
+  password_confirmation: "admin_user@example.com",
+  admin: "true"
+)
+
 
 10.times do |n|
   User.create!(
@@ -38,7 +48,7 @@ end
   name = Faker::Games::Pokemon.name
 
   # user = User.create(name: "yoyogi1", email: "yoyogi1@example.com", password: "yoyogi1@example.com", )
-  user = User.find(4)
+  user = User.find(3)
   user.wines.create!(
     user_id: 4,
     image: File.open('./app/assets/images/sample_image.jpeg'),
