@@ -3,30 +3,31 @@
   <head>
     <title>DicWineSo2</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if user_signed_in? %>
-      <%= link_to "メインページ", wines_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
-      <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+  <div class="container">
+    <body>
+      <% if user_signed_in? %>
+        <%= link_to "メインページ", wines_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
+        <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
 
-    <% if notice %>
-     <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
-    
-    <%= yield %>
-  </body>
+      <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+      
+      <%= yield %>
+    </body>
+  </div>  
 </html>

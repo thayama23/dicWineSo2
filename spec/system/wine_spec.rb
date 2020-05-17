@@ -76,7 +76,7 @@ RSpec.describe 'ワインレビィー機能', type: :system do
         fill_in 'user[email]', with: 'sample@example.com'
         fill_in 'user[password]', with: 'sample@example.com'
         click_button 'ログイン'
-        click_on 'レビュー編集'
+        click_on '編集'
         sleep 1
         page.accept_alert
       
