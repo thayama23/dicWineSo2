@@ -7,7 +7,7 @@
   <hr>
 <% end %>
 <br>
-<%= link_to 'ワインレビューを投稿しよう！', new_wine_path %>
+<button type="button" class="btn-primary.outline"><%= link_to 'ワインレビューを投稿しよう！', new_wine_path %></button>
 
 <%# <%= search_form_for @q do |f| %> 
 <%= search_form_for @q do |f| %>
@@ -44,54 +44,54 @@
 
 
 
-<table>
+<table class="wine_table">
   <tr>
-    <th><%= sort_link(@q, :name, "ユーザー") %></th>
-    <th>画像</th>
-    <th><%= sort_link(@q, :price, "価格") %></th>
-    <th><%= sort_link(@q, :kind, "種類") %></th>
-    <th><%= sort_link(@q, :variety, "ぶどう品種") %></th>
-    <th><%= sort_link(@q, :country, "原産国") %></th>
-    <th><%= sort_link(@q, :origin, "生産地") %></th>
-    <th>名前</th>
-    <th><%= sort_link(@q, :vintage, "収穫年") %></th>
-    <th><%= sort_link(@q, :taste, "味") %></th>
-    <th><%= sort_link(@q, :ranking, "評価") %></th>
+    <th class="text-center" ><%= sort_link(@q, :name, "ユーザー") %></th>
+    <th class="text-center">画像</th>
+    <th class="text-center"><%= sort_link(@q, :price, "価格") %></th>
+    <th class="text-center"><%= sort_link(@q, :kind, "種類") %></th>
+    <th class="text-center"><%= sort_link(@q, :variety, "ぶどう品種") %></th>
+    <th class="text-center"><%= sort_link(@q, :country, "原産国") %></th>
+    <th class="text-center"><%= sort_link(@q, :origin, "生産地") %></th>
+    <th class="text-center">名前</th>
+    <th class="text-center"><%= sort_link(@q, :vintage, "収穫年") %></th>
+    <th class="text-center"><%= sort_link(@q, :taste, "味") %></th>
+    <th class="text-center"> <%= sort_link(@q, :ranking, "評価") %></th>
     <%# <th>紹介コメント欄</th> %>
-    <th>タグ</th>
+    <th class="text-center">タグ</th>
   </tr>
 
   <tbody>
     <% @wines.each do |wine| %>
       <tr>
-        <td><%= wine.user.name%></td>
-        <td><%= image_tag wine.image.to_s %></td>
-        <td><%= wine.price %>円</td>
-        <td class = "wine_row" ><%= wine.kind %></td>
-        <td><%= wine.variety %></td>
-        <td><%= wine.country %></td>
-        <td><%= wine.origin %></td>
-        <td><%= wine.name %></td>
-        <td><%= wine.vintage.year %></td>
-        <td><%= wine.taste %></td>
-        <td><%= wine.ranking %></td>
+        <td class="text-center"><%= wine.user.name%></td>
+        <td class="text-center"><%= image_tag wine.image.to_s %></td>
+        <td class="text-center"><%= wine.price %>円</td>
+        <td class = "wine_row text-center" ><%= wine.kind %></td>
+        <td class="text-center"><%= wine.variety %></td>
+        <td class="text-center"><%= wine.country %></td>
+        <td class="text-center"><%= wine.origin %></td>
+        <td class="text-center"><%= wine.name %></td>
+        <td class="text-center"><%= wine.vintage.year %></td>
+        <td class="text-center"><%= wine.taste %></td>
+        <td class="text-center"><%= wine.ranking %></td>
         <%# <td><%= wine.overview %></td> 
 
-         <td>
+         <td class="text-center">
           <% wine.labels.each do |label| %>
             <%= label.name %>
           <% end %>
         </td>
       
          <% if current_user.present? %>
-            <td><%= link_to '詳細確認', wine_path(wine.id) %></td> 
+            <td><button type="button" class="btn btn-outline-primary btn-sm"><%= link_to '詳細確認', wine_path(wine.id) %></button></td> 
           <% if wine.user_id == current_user.id %>
               
-              <td><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></>
-              <td><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+              <td><button type="button" class="btn btn-outline-success btn-sm"><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
+              <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
           <% end %>
-          <% else %>
-            <td><%= link_to '詳細確認', wine_path(wine.id) %></td>
+          <% else %> 
+            <td><button type="button" class="btn btn-outline-primary btn-sm"><%= link_to '詳細確認', wine_path(wine.id) %></button></td>
         <% end %>
 
       </tr>
