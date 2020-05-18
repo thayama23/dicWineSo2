@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: dicWineSo2_development
+
+
+test:
+  <<: *default
+  database: dicWineSo2_test
+
+
+production:
+  <<: *default
+  database: dicWineSo2_production
+  username: dicWineSo2
+  password: <%= ENV['DICWINESO2_DATABASE_PASSWORD'] %>

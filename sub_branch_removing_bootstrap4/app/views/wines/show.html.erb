@@ -1,0 +1,66 @@
+<h1>ワイン詳細画面</h1>
+
+
+<table>
+  <tr>
+    <th class="text-center">画像</th>
+    <th class="text-center">価格</th>
+    <th class="text-center">種類</th>
+    <th class="text-center">ぶどう品種</th>
+    <th class="text-center">原産国</th>
+    <th class="text-center">生産地</th>
+    <th class="text-center">名前</th>
+    <th class="text-center">収穫年</th>
+    <th class="text-center">味</th>
+    <%# <th>紹介コメント欄</th>
+    <th>評価</th> %>
+  </tr>
+
+  <tbody>
+      <tr>
+        <td class="text-center"><%= image_tag(@wine.image.to_s) %></td>
+        <td class="text-center"><%= @wine.price %>円</td>
+        <td class="text-center"><%= @wine.kind %></td>
+        <td class="text-center"><%= @wine.variety %></td>
+        <td class="text-center"> <%= @wine.country %></td>
+        <td class="text-center"><%= @wine.origin %></td>
+        <td class="text-center"> <%= @wine.name %></td>
+        <td class="text-center"><%= @wine.vintage.year %></td>
+        <td class="text-center"><%= @wine.taste %></td>
+        <%# <td><%= @wine.ranking %></td>
+        <%# <td><%= @wine.overview %></td> 
+      </tr>
+  </tbody>
+</table>
+<br>
+<b>評価：</b>
+<%= @wine.ranking %>
+
+<div>
+<b>紹介コメント欄：</b>
+<%= @wine.overview %>
+</div>
+
+<br>
+
+  <% if current_user.present?%>
+    <% unless @wine.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= link_to 'お気に入り指定する', favorites_path(wine_id: @wine.id), method: :post, class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  <% else %>
+  <% end %> 
+
+<br>
+ <%= link_to '戻る', wines_path %> 
+<hr>
+
+
+
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, wine: @wine } %>
+</div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, wine: @wine } %>
