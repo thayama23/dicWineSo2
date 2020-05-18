@@ -52,11 +52,11 @@ RSpec.describe 'ユーザー新規登録・ログイン・ログアウト機能'
         expect(page).to have_content '他の人のページへアクセスは出来ません!'
       end
 
-      it 'ログアウトができること' do
-        user_login
-        click_link 'ログアウト'
-        expect(page).to have_content 'ログアウトしました。'
-      end
+      # it 'ログアウトができること' do
+      #   user_login
+      #   click_link 'ログアウト'
+      #   expect(page).to have_content 'ログアウトしました。'
+      # end
 
       it 'アドミ権限でのログイン機能確認' do
         admin = FactoryBot.create(:admin)
