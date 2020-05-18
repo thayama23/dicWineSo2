@@ -10,22 +10,26 @@
 
   <div class="container">
     <body>
-      <% if user_signed_in? %>
-        <%= link_to "メインページ", wines_path %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
-        <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
-      <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
-
-      <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
-      <% end %>
+     
+        <% if user_signed_in? %>
+          <%= link_to "メインページ", wines_path %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <span class="mypage_favorite clearfix">
+          <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
+          <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
+          </span>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "ログイン", new_user_session_path %>
+        <% end %>
+      
+        <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+        
       
       <%= yield %>
     </body>

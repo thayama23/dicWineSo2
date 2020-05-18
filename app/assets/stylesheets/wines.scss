@@ -1,3 +1,35 @@
 // Place all the styles related to the wines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  background-image: image-url("default_wine.jpeg");
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  background-position: center;
+  height: 80%;
+  margin: 0;
+}
+
+.container > img {
+  opacity: 0.6;  
+}
+
+
+.mypage_favorite {
+  float: right;
+  // list-style: none;
+
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
