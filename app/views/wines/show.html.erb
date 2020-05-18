@@ -1,39 +1,39 @@
 <h1>ワイン詳細画面</h1>
 
 
-<table>
+<table class="wine_table">
   <tr>
-    <th>画像</th>
-    <th>価格</th>
-    <th>種類</th>
-    <th>ぶどう品種</th>
-    <th>原産国</th>
-    <th>生産地</th>
-    <th>名前</th>
-    <th>収穫年</th>
-    <th>味</th>
+    <th class="text-center">画像</th>
+    <th class="text-center">価格</th>
+    <th class="text-center">種類</th>
+    <th class="text-center">ぶどう品種</th>
+    <th class="text-center">原産国</th>
+    <th class="text-center">生産地</th>
+    <th class="text-center">名前</th>
+    <th class="text-center">収穫年</th>
+    <th class="text-center">味</th>
     <%# <th>紹介コメント欄</th>
     <th>評価</th> %>
   </tr>
 
   <tbody>
       <tr>
-        <td><%= image_tag(@wine.image.to_s) %></td>
-        <td><%= @wine.price %>円</td>
-        <td><%= @wine.kind %></td>
-        <td><%= @wine.variety %></td>
-        <td><%= @wine.country %></td>
-        <td><%= @wine.origin %></td>
-        <td><%= @wine.name %></td>
-        <td><%= @wine.vintage.year %></td>
-        <td><%= @wine.taste %></td>
+        <td class="text-center"><%= image_tag(@wine.image.to_s) %></td>
+        <td class="text-center"><%= @wine.price %>円</td>
+        <td class="text-center"><%= @wine.kind %></td>
+        <td class="text-center"><%= @wine.variety %></td>
+        <td class="text-center"><%= @wine.country %></td>
+        <td class="text-center"><%= @wine.origin %></td>
+        <td class="text-center"><%= @wine.name %></td>
+        <td class="text-center"><%= @wine.vintage.year %></td>
+        <td class="text-center"><%= @wine.taste %></td>
         <%# <td><%= @wine.ranking %></td>
         <%# <td><%= @wine.overview %></td> 
       </tr>
   </tbody>
 </table>
 <br>
-<b>評価：</b>
+<b >評価：</b>
 <%= @wine.ranking %>
 
 <div>
@@ -55,8 +55,8 @@
   <% end %> 
 
 <br>
-<%= link_to 'ワインレビュウ一覧画面', wines_path %>
-
+<%= link_to '戻る', wines_path %>
+<hr>
 
 
 <div id="comments_area">

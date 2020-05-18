@@ -7,7 +7,7 @@
   <hr>
 <% end %>
 <br>
-<button type="button" class="btn-primary.outline"><%= link_to 'ワインレビューを投稿しよう！', new_wine_path %></button>
+<button type="button" class="btn btn-outline-success btn-xs"><%= link_to 'ワインレビューを投稿しよう！', new_wine_path %></button>
 
 <%# <%= search_form_for @q do |f| %> 
 <%= search_form_for @q do |f| %>
@@ -84,14 +84,14 @@
         </td>
       
          <% if current_user.present? %>
-            <td><button type="button" class="btn btn-outline-primary btn-sm"><%= link_to '詳細確認', wine_path(wine.id) %></button></td> 
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td> 
           <% if wine.user_id == current_user.id %>
               
-              <td><button type="button" class="btn btn-outline-success btn-sm"><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
-              <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
+              <td><button type="button" class="btn btn-outline-success btn-xs"><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
+              <td><button type="button" class="btn btn-outline-danger btn-xs"><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
           <% end %>
           <% else %> 
-            <td><button type="button" class="btn btn-outline-primary btn-sm"><%= link_to '詳細確認', wine_path(wine.id) %></button></td>
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td>
         <% end %>
 
       </tr>

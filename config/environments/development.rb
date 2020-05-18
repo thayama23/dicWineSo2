@@ -4,10 +4,10 @@ Rails.application.configure do
 
   config.eager_load = false
   #falseだとUser用で、trueだと開発用
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
   #
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
+    config.action_controller.perform_caching = false
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
