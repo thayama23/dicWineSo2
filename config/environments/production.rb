@@ -12,8 +12,10 @@ Rails.application.configure do
 
   config.assets.js_compressor = :uglifier
 
-  config.assets.compile = false
-
+  # Needs to be set to "true" of image display and also for precompile!
+  # https://qiita.com/kazukimatsumoto/items/a0daa7281a3948701c39
+  # config.assets.compile = false
+  config.assets.compile = true
 
 
 
