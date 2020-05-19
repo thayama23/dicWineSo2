@@ -25,7 +25,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   # gem 'faker'
-  gem 'faker','2.11'
+  # gem 'faker','2.11'
   gem 'launchy'
 end
 
@@ -56,4 +56,4 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'jquery-rails'
 gem 'ransack'
-
+gem 'faker','2.11'
