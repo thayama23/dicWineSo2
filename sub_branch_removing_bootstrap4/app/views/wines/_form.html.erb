@@ -1,0 +1,83 @@
+<%= form_with(model: @wine, local: true ,url: choose_new_or_edit) do |form| %>
+  <% if @wine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @wine.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @wine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="wine_image">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div class="wine_price">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="wine_kind">
+    <%= form.label :kind %>
+    <%= form.text_field :kind %>
+  </div>
+
+  <div class="wine_variety">
+    <%= form.label :variety %>
+    <%= form.text_field :variety %>
+  </div>
+
+  <div class="wine_country">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="wine_origin">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="wine_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%# <div class="wine_vintage">
+    <%= form.label :vintage %>
+    <%# <%= form.number_field :vintage %>
+  <%# </div>   %>
+
+  <div class="wine_vintage">
+    <%= form.label :vintage %>
+    <%= form.date_select :vintage, start_year:1900, discard_month:true, discard_day:true %>
+  </div>
+
+  <div class="wine_taste">
+    <%= form.label :taste %>
+    <%= form.select :taste, Wine.tastes.keys %>
+  </div>
+
+  <div class="wine_ranking">
+    <%= form.label :ranking %>
+    <%= form.select :ranking, Wine.rankings.keys %>
+  </div>
+
+  <div class="wine_overview">
+    <%= form.label :overview %>
+    <%= form.text_area :overview %>
+  </div>
+
+  <div class="wine_label">
+    <%= form.label :label %>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

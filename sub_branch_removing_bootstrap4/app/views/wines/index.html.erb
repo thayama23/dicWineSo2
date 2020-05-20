@@ -1,0 +1,103 @@
+
+
+<% if current_user.try(:admin?) %>
+  <h1>Wines_admin</h1>
+<% else %>  
+  <h1>ワインレビュー一覧</h1>
+<% end %>
+<hr>
+
+<%= link_to 'ワインレビューを投稿しよう！', new_wine_path %>
+
+<%# <%= search_form_for @q do |f| %> 
+<%= search_form_for @q do |f| %>
+  <ul>
+  <li>
+    <%= f.label :kind, "種類指定" %>
+    <%= f.search_field :kind_cont %>
+
+    <%= f.label :price, "価格" %>
+    <%= f.number_field :price_gteq %>円以上〜
+    <%= f.number_field :price_lt %>円未満
+  </li> 
+
+  <li>
+    <%= f.label :ranking, "評価" %>
+    <%= f.select :ranking_eq, [["無評価", 0], ["残念", 1], ["今一", 2], ["まーまー", 3], ["美味しい！", 4], ["最高！", 5]] ,{include_blank: true} %>
+  </li>  
+
+    <li>
+      <% Label.all.each do |label| %>
+        <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+        <label><%= label.name %></label>
+      <% end %>
+    </li>
+
+    <%= f.submit "検索" %>
+
+    <li>
+    <%= link_to "最新投稿から閲覧", wines_path(sort: "true") %>
+    </li>
+  </ul>
+<% end %>
+<hr>
+
+
+
+
+<table>
+  <tr>
+    <th class="text-center"><%= sort_link(@q, :name, "ユーザー") %></th>
+    <th class="text-center">画像</th>
+    <th class="text-center"><%= sort_link(@q, :price, "価格") %></th>
+    <th class="text-center"><%= sort_link(@q, :kind, "種類") %></th>
+    <th class="text-center"><%= sort_link(@q, :variety, "ぶどう品種") %></th>
+    <th class="text-center"><%= sort_link(@q, :country, "原産国") %></th>
+    <th class="text-center"><%= sort_link(@q, :origin, "生産地") %></th>
+    <th class="text-center">名前</th>
+    <th class="text-center"><%= sort_link(@q, :vintage, "収穫年") %></th>
+    <th class="text-center"><%= sort_link(@q, :taste, "味") %></th>
+    <th class="text-center"><%= sort_link(@q, :ranking, "評価") %></th>
+    <%# <th>紹介コメント欄</th> %>
+    <th class="text-center">タグ</th>
+  </tr>
+
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td class="text-center" ><%= wine.user.name%></td>
+        <a> <td class="text-center" ><%= image_tag wine.image.to_s %></td> </a>
+        <td class="text-center" ><%= wine.price %>円</td>
+        <td class = " text-center wine_row" ><%= wine.kind %></td>
+        <td class="text-center"><%= wine.variety %></td>
+        <td class="text-center"><%= wine.country %></td>
+        <td class="text-center"><%= wine.origin %></td>
+        <td class="text-center"><%= wine.name %></td>
+        <td class="text-center"><%= wine.vintage.year %></td>
+        <td class="text-center"><%= wine.taste %></td>
+        <td class="text-center"><%= wine.ranking %></td>
+        <%# <><%= wine.overview %>
+
+         <td class="text-center">
+          <% wine.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
+      
+          <% if current_user.present? %>
+            <td class="btn btn-outline-success" ><%= link_to '詳細確認', wine_path(wine.id) %></td>
+          <% if wine.user_id == current_user.id %>
+              
+            <td class="btn btn-outline-warning" ><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></td>
+            <td class="btn btn-outline-danger" ><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+          <% end %>
+          <% else %>
+            <td><%= link_to '詳細確認', wine_path(wine.id) %></td>
+          <% end %>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

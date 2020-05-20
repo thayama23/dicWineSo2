@@ -4,10 +4,10 @@
   <h1>Wines_admin</h1>
 <% else %>  
   <h1>ワインレビュー一覧</h1>
+  <hr>
 <% end %>
-<hr>
-
-<%= link_to 'ワインレビューを投稿しよう！', new_wine_path %>
+<br>
+<button type="button" class="btn btn-outline-success btn-xs"><%= link_to 'ワインレビューを投稿しよう！', new_wine_path %></button>
 
 <%# <%= search_form_for @q do |f| %> 
 <%= search_form_for @q do |f| %>
@@ -44,10 +44,9 @@
 
 
 
-
-<table>
+<table class="wine_table">
   <tr>
-    <th class="text-center"><%= sort_link(@q, :name, "ユーザー") %></th>
+    <th class="text-center" ><%= sort_link(@q, :name, "ユーザー") %></th>
     <th class="text-center">画像</th>
     <th class="text-center"><%= sort_link(@q, :price, "価格") %></th>
     <th class="text-center"><%= sort_link(@q, :kind, "種類") %></th>
@@ -57,7 +56,7 @@
     <th class="text-center">名前</th>
     <th class="text-center"><%= sort_link(@q, :vintage, "収穫年") %></th>
     <th class="text-center"><%= sort_link(@q, :taste, "味") %></th>
-    <th class="text-center"><%= sort_link(@q, :ranking, "評価") %></th>
+    <th class="text-center"> <%= sort_link(@q, :ranking, "評価") %></th>
     <%# <th>紹介コメント欄</th> %>
     <th class="text-center">タグ</th>
   </tr>
@@ -65,10 +64,10 @@
   <tbody>
     <% @wines.each do |wine| %>
       <tr>
-        <td class="text-center" ><%= wine.user.name%></td>
-        <a> <td class="text-center" ><%= image_tag wine.image.to_s %></td> </a>
-        <td class="text-center" ><%= wine.price %>円</td>
-        <td class = " text-center wine_row" ><%= wine.kind %></td>
+        <td class="text-center"><%= wine.user.name%></td>
+        <td class="text-center"><%= image_tag wine.image.to_s %></td>
+        <td class="text-center"><%= wine.price %>円</td>
+        <td class = "wine_row text-center" ><%= wine.kind %></td>
         <td class="text-center"><%= wine.variety %></td>
         <td class="text-center"><%= wine.country %></td>
         <td class="text-center"><%= wine.origin %></td>
@@ -76,7 +75,7 @@
         <td class="text-center"><%= wine.vintage.year %></td>
         <td class="text-center"><%= wine.taste %></td>
         <td class="text-center"><%= wine.ranking %></td>
-        <%# <><%= wine.overview %>
+        <%# <td><%= wine.overview %></td> 
 
          <td class="text-center">
           <% wine.labels.each do |label| %>
@@ -84,17 +83,17 @@
           <% end %>
         </td>
       
-          <% if current_user.present? %>
-            <td class="btn btn-outline-success" ><%= link_to '詳細確認', wine_path(wine.id) %></td>
+         <% if current_user.present? %>
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td> 
           <% if wine.user_id == current_user.id %>
               
-            <td class="btn btn-outline-warning" ><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></td>
-            <td class="btn btn-outline-danger" ><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+              <td><button type="button" class="btn btn-outline-success btn-xs"><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
+              <td><button type="button" class="btn btn-outline-danger btn-xs"><%= link_to '削除', wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
           <% end %>
-          <% else %>
-            <td><%= link_to '詳細確認', wine_path(wine.id) %></td>
-          <% end %>
-    
+          <% else %> 
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>

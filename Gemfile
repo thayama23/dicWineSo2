@@ -24,7 +24,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'faker'
+  # gem 'faker'
+  # gem 'faker','2.11'
   gem 'launchy'
 end
 
@@ -55,7 +56,4 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'jquery-rails'
 gem 'ransack'
-gem 'bootstrap', '~> 4.1.1'
-### installed these 2 for Bootstrap4
-gem 'sprockets', '~> 3.7.2'
-gem 'bootstrap-sass'
+gem 'faker','2.11'

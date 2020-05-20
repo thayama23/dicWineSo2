@@ -1,0 +1,7 @@
+{
+  "name": "dicWineSo2",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}

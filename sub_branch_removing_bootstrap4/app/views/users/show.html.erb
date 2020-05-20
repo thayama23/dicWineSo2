@@ -1,0 +1,8 @@
+<h2><%= "#{@user.name}のマイページ" %></h2>
+
+<div class="row">
+    <p>ユーザーネーム：<%= @user.name %></p>
+    <p>メールアドレス：<%= @user.email %></p>
+</div>
+<br>
+<%= link_to "ユーザー編集設定画面へ", edit_user_registration_path %>

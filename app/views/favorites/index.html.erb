@@ -1,31 +1,31 @@
 <h2><%= current_user.name %>のお気に入りブログリスト</h2>
 
-<table>
+<table class="wine_table">
   <tr>
-    <th>レビュー投稿者</th>
-    <th>画像</th>
-    <th>値段帯</th>
-    <th>種類</th>
-    <th>ぶどう品種</th>
-    <th>原産国</th>
-    <th>原産地</th>
-    <th>名前</th>
-    <th>収穫年</th>
-    <th>味</th>
-    <th>投稿者の評価</th>
+    <th class="text-center">レビュー投稿者</th>
+    <th class="text-center">画像</th>
+    <th class="text-center">値段帯</th>
+    <th class="text-center">種類</th>
+    <th class="text-center">ぶどう品種</th>
+    <th class="text-center">原産国</th>
+    <th class="text-center">原産地</th>
+    <th class="text-center">名前</th>
+    <th class="text-center">収穫年</th>
+    <%# <th>味</th> %>
+    <th class="text-center">投稿者の評価</th>
   </tr>
 <% @favorite_wines.each do |wine| %>
   <tr>
-    <td><%= wine.user.name%></td>
-    <td><%= image_tag wine.image.to_s %></td>
-    <td><%= wine.price%></td>
-    <td><%= wine.kind%></td>
-    <td><%= wine.variety%></td>
-    <td><%= wine.country%></td>
-    <td><%= wine.origin%></td>
-    <td><%= wine.name%></td>
-    <td><%= wine.vintage%></td>
-    <td><%= wine.ranking%></td>
+    <td class="text-center"><%= wine.user.name%></td>
+    <td class="text-center"><%= image_tag wine.image.to_s %></td>
+    <td class="text-center"><%= wine.price%></td>
+    <td class="text-center"><%= wine.kind%></td>
+    <td class="text-center"><%= wine.variety%></td>
+    <td class="text-center"><%= wine.country%></td>
+    <td class="text-center"><%= wine.origin%></td>
+    <td class="text-center"><%= wine.name%></td>
+    <td class="text-center"><%= wine.vintage.year%></td>
+    <td class="text-center"><%= wine.ranking%></td>
   </tr>
 <% end %>
 </table>

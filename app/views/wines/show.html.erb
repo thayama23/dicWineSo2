@@ -1,7 +1,7 @@
 <h1>ワイン詳細画面</h1>
 
 
-<table>
+<table class="wine_table">
   <tr>
     <th class="text-center">画像</th>
     <th class="text-center">価格</th>
@@ -22,9 +22,9 @@
         <td class="text-center"><%= @wine.price %>円</td>
         <td class="text-center"><%= @wine.kind %></td>
         <td class="text-center"><%= @wine.variety %></td>
-        <td class="text-center"> <%= @wine.country %></td>
+        <td class="text-center"><%= @wine.country %></td>
         <td class="text-center"><%= @wine.origin %></td>
-        <td class="text-center"> <%= @wine.name %></td>
+        <td class="text-center"><%= @wine.name %></td>
         <td class="text-center"><%= @wine.vintage.year %></td>
         <td class="text-center"><%= @wine.taste %></td>
         <%# <td><%= @wine.ranking %></td>
@@ -33,7 +33,7 @@
   </tbody>
 </table>
 <br>
-<b>評価：</b>
+<b >評価：</b>
 <%= @wine.ranking %>
 
 <div>
@@ -55,9 +55,8 @@
   <% end %> 
 
 <br>
- <%= link_to '戻る', wines_path %> 
+<%= link_to '戻る', wines_path %>
 <hr>
-
 
 
 <div id="comments_area">
