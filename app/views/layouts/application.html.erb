@@ -10,33 +10,35 @@
 
   <div class="container">
     <body>
-      <header class="main-header">
-        <% if user_signed_in? %>
-          <%= link_to image_tag("wine_glass.jpg"), wines_path, class: "logo_mark" %>
-          <span class="mypage_favorite clearfix">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
-          <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
-          </span>
-        <% else %>
-          <%= link_to "新規登録", new_user_registration_path %>
-          <%= link_to "ログイン", new_user_session_path %>
-        <% end %>
-      </header>
-      
-        <% if notice %>
-        <p class="alert alert-notice"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-error"><%= alert %></p>
-        <% end %>
+      <div class="wrapper">
+        <header class="main-header">
+          <% if user_signed_in? %>
+            <%= link_to image_tag("wine_glass.jpg"), wines_path, class: "logo_mark" %>
+            <span class="mypage_favorite clearfix">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
+            <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
+            </span>
+          <% else %>
+            <%= link_to "新規登録", new_user_registration_path %>
+            <%= link_to "ログイン", new_user_session_path %>
+          <% end %>
+        </header>
         
-      
-      <%= yield %>
+          <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-error"><%= alert %></p>
+          <% end %>
+          
+        
+        <%= yield %>
 
-       <%# <footer class ="footer">
-            <p class = "footer_text">Copyright © 2020 WineSo INC All RIGHTS RESERVED.</p>
-      </footer> %>
+        <footer class ="footer">
+              <p class = "footer_text">Copyright © 2020 WineSo INC All RIGHTS RESERVED.</p>
+        </footer>
+      </div>  
     </body>
   </div>  
 </html>
