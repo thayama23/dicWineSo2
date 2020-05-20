@@ -12,9 +12,9 @@
     <body>
       <header class="main-header">
         <% if user_signed_in? %>
-          <%= link_to "メインページ", wines_path %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to image_tag("wine_glass.jpg"), wines_path, class: "logo_mark" %>
           <span class="mypage_favorite clearfix">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <%= link_to "#{current_user.name}のマイページ", user_path(current_user.id) %>
           <%= link_to "#{current_user.name}のお気に入りページ", favorites_path(current_user.id) %>
           </span>
@@ -34,9 +34,9 @@
       
       <%= yield %>
 
-       <footer class ="footer">
+       <%# <footer class ="footer">
             <p class = "footer_text">Copyright © 2020 WineSo INC All RIGHTS RESERVED.</p>
-      </footer>
+      </footer> %>
     </body>
   </div>  
 </html>
