@@ -55,7 +55,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'jquery-rails'
 gem 'ransack'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 ### installed these 2 for Bootstrap4
 gem 'sprockets', '~> 3.7.2'
 gem 'bootstrap-sass'
