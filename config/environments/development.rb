@@ -38,11 +38,9 @@ Rails.application.configure do
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Line42, 開発環境　Line43,本番環境
+  # Line42, 開発環境　
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # config.action_mailer.default_url_options = { :host => 'https://dic-wineso2-master.herokuapp.com/' }
-
-
+  
   config.action_mailer.delivery_method = :letter_opener
 
   # host = 'samplehost'
