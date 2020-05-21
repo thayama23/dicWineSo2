@@ -41,7 +41,7 @@ Rails.application.configure do
   # Line42, 開発環境　
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # host = 'samplehost'
   # Rails.application.routes.default_url_options[:host] = host
