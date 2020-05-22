@@ -1,7 +1,7 @@
 ja:
   Wine:
     title: ワインレビュー一覧
-    show: ワイン詳細画面
+    show: ワインレビュー詳細画面
     favorite: のお気に入りブログリスト
     image: 画像
     price: 価格
@@ -15,4 +15,4 @@ ja:
     ranking: 評価
     overview: 紹介コメント欄
     labels: タグ
-    user.name: ユーザー
+    
