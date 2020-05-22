@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :users
   resources :favorites, only: [:index, :create, :destroy]
   
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+  # devise_scope :user do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
 
   # if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
