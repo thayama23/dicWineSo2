@@ -1,0 +1,18 @@
+ja:
+  Wine:
+    title: ワインレビュー一覧
+    show: ワイン詳細画面
+    favorite: のお気に入りブログリスト
+    image: 画像
+    price: 価格
+    kind: 種類
+    variety: ぶどう種類
+    country: 原産国
+    origin: 生産地
+    name: 名前
+    vintage: 収穫年
+    taste: 味
+    ranking: 評価
+    overview: 紹介コメント欄
+    labels: タグ
+    user.name: ユーザー

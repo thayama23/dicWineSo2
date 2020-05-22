@@ -1,17 +1,17 @@
-<h1>ワイン詳細画面</h1>
-
+<%# <h1>ワイン詳細画面</h1> %>
+<h1><%= t('Wine.title') %> </h1>
 
 <table class="wine_table">
   <tr>
-    <th class="text-center">画像</th>
-    <th class="text-center">価格</th>
-    <th class="text-center">種類</th>
-    <th class="text-center">ぶどう品種</th>
-    <th class="text-center">原産国</th>
-    <th class="text-center">生産地</th>
-    <th class="text-center">名前</th>
-    <th class="text-center">収穫年</th>
-    <th class="text-center">味</th>
+    <th class="text-center"> <%= t('Wine.image') %> </th>
+    <th class="text-center"> <%= t('Wine.price') %> </th>
+    <th class="text-center"> <%= t('Wine.kind') %> </th>
+    <th class="text-center"> <%= t('Wine.variety') %> </th>
+    <th class="text-center"> <%= t('Wine.country') %> </th>
+    <th class="text-center"> <%= t('Wine.origin') %> </th>
+    <th class="text-center"> <%= t('Wine.name') %> </th>
+    <th class="text-center"> <%= t('Wine.vintage') %></th>
+    <th class="text-center"> <%= t('Wine.taste') %> </th>
     <%# <th>紹介コメント欄</th>
     <th>評価</th> %>
   </tr>
@@ -33,11 +33,11 @@
   </tbody>
 </table>
 <br>
-<b >評価：</b>
+<b ><%= t('Wine.ranking') %>：</b>
 <%= @wine.ranking %>
 
 <div>
-<b>紹介コメント欄：</b>
+<b><%= t('Wine.overview') %>：</b>
 <%= @wine.overview %>
 </div>
 
@@ -63,3 +63,4 @@
   <%= render partial: 'comments/index', locals: { comments: @comments, wine: @wine } %>
 </div>
   <%= render partial: 'comments/form', locals: { comment: @comment, wine: @wine } %>
+  

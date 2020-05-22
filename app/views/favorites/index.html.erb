@@ -1,18 +1,16 @@
-<h2><%= current_user.name %>のお気に入りブログリスト</h2>
-
-<table class="wine_table">
+<h2> <%= current_user.name %> <%= t('Wine.favorite') %> </h2>
   <tr>
-    <th class="text-center">レビュー投稿者</th>
-    <th class="text-center">画像</th>
-    <th class="text-center">値段帯</th>
-    <th class="text-center">種類</th>
-    <th class="text-center">ぶどう品種</th>
-    <th class="text-center">原産国</th>
-    <th class="text-center">原産地</th>
-    <th class="text-center">名前</th>
-    <th class="text-center">収穫年</th>
+    <th class="text-center"> <%= t('User.name') %> </th>
+    <th class="text-center"> <%= t('Wine.image') %> </th>
+    <th class="text-center"> <%= t('Wine.price') %> </th>
+    <th class="text-center">　<%= t('Wine.kind') %> </th>
+    <th class="text-center"> <%= t('Wine.variety') %> </th>
+    <th class="text-center"> <%= t('Wine.country') %> </th>
+    <th class="text-center"> <%= t('Wine.origin') %> </th>
+    <th class="text-center"> <%= t('Wine.name') %></th>
+    <th class="text-center"><%= t('Wine.vintage') %> </th>
     <%# <th>味</th> %>
-    <th class="text-center">投稿者の評価</th>
+    <th class="text-center"> <%= t('Wine.ranking') %></th>
   </tr>
 <% @favorite_wines.each do |wine| %>
   <tr>

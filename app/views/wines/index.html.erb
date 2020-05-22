@@ -1,9 +1,8 @@
-
-
 <% if current_user.try(:admin?) %>
   <h1>Wines_admin</h1>
 <% else %>  
-  <h1>ワインレビュー一覧</h1>
+  <%# <h1>ワインレビュー一覧</h1> %>
+  <h1><%= t('Wine.title') %> </h1>
   <hr>
 <% end %>
 <br>
@@ -13,16 +12,16 @@
 <%= search_form_for @q do |f| %>
   <ul>
   <li>
-    <%= f.label :kind, "種類指定" %>
+    <%= f.label :kind, t('Wine.kind') %>
     <%= f.search_field :kind_cont %>
 
-    <%= f.label :price, "価格" %>
+    <%= f.label :price, t('Wine.price') %>
     <%= f.number_field :price_gteq %>円以上〜
     <%= f.number_field :price_lt %>円未満
   </li> 
 
   <li>
-    <%= f.label :ranking, "評価" %>
+    <%= f.label :ranking, t('Wine.ranking') %>
     <%= f.select :ranking_eq, [["無評価", 0], ["残念", 1], ["今一", 2], ["まーまー", 3], ["美味しい！", 4], ["最高！", 5]] ,{include_blank: true} %>
   </li>  
 
@@ -42,23 +41,22 @@
 <% end %>
 <hr>
 
-
-
 <table class="wine_table">
   <tr>
-    <th class="text-center" ><%= sort_link(@q, :name, "ユーザー") %></th>
-    <th class="text-center">画像</th>
-    <th class="text-center"><%= sort_link(@q, :price, "価格") %></th>
-    <th class="text-center"><%= sort_link(@q, :kind, "種類") %></th>
-    <th class="text-center"><%= sort_link(@q, :variety, "ぶどう品種") %></th>
-    <th class="text-center"><%= sort_link(@q, :country, "原産国") %></th>
-    <th class="text-center"><%= sort_link(@q, :origin, "生産地") %></th>
-    <th class="text-center">名前</th>
-    <th class="text-center"><%= sort_link(@q, :vintage, "収穫年") %></th>
-    <th class="text-center"><%= sort_link(@q, :taste, "味") %></th>
-    <th class="text-center"> <%= sort_link(@q, :ranking, "評価") %></th>
+    <th class="text-center" ><%= sort_link(@q, t('User.name')) %></th>
+    <th class="text-center"> <%= sort_link(@q, t('Wine.image')) %> </th>
+    <%# <th class="text-center"><%= sort_link(@q, :price, "価格") %></th> 
+    <th class="text-center"><%= sort_link(@q, t('Wine.price')) %></th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.kind')) %></th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.variety')) %></th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.country')) %></th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.origin')) %></th>
+    <th class="text-center"> <%= sort_link(@q, t('Wine.name')) %> </th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.vintage')) %></th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.taste')) %></th>
+    <th class="text-center"> <%= sort_link(@q, t('Wine.ranking')) %></th>
     <%# <th>紹介コメント欄</th> %>
-    <th class="text-center">タグ</th>
+    <th class="text-center"><%= sort_link(@q, t('Wine.labels')) %></th>
   </tr>
 
   <tbody>
@@ -98,5 +96,3 @@
     <% end %>
   </tbody>
 </table>
-
-
