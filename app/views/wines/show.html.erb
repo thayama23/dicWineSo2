@@ -1,5 +1,5 @@
 <%# <h1>ワイン詳細画面</h1> %>
-<h1><%= t('Wine.title') %> </h1>
+<h1><%= t('Wine.show') %> </h1>
 
 <table class="wine_table">
   <tr>
@@ -63,4 +63,3 @@
   <%= render partial: 'comments/index', locals: { comments: @comments, wine: @wine } %>
 </div>
   <%= render partial: 'comments/form', locals: { comment: @comment, wine: @wine } %>
-  
