@@ -101,5 +101,3 @@ end
     ranking: "まーまー"
   )
 end
-
-
