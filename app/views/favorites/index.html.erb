@@ -17,7 +17,7 @@
   <tr>
     <td class="text-center"><%= wine.user.name%></td>
     <td class="text-center"><%= image_tag wine.image.to_s %></td>
-    <td class="text-center"><%= wine.price%>円</td>
+    <td class="text-center"><%= wine.price%><%= t('Wine.yen') %></td>
     <td class="text-center"><%= wine.kind%></td>
     <td class="text-center"><%= wine.variety%></td>
     <td class="text-center"><%= wine.country%></td>
@@ -28,3 +28,5 @@
   </tr>
 <% end %>
 </table>
+<br>
+<%= link_to t('Back'), wines_path %>
