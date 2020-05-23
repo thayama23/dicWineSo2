@@ -6,7 +6,7 @@
   <hr>
 <% end %>
 <br>
-<button type="button" class="btn btn-outline-success btn-xs"><%= link_to 'ワインレビューを投稿しよう！', new_wine_path %></button>
+<button type="button" class="btn btn-outline-success btn-xs"><%= link_to t('Share your wine experience!'), new_wine_path %></button>
 
 <%# <%= search_form_for @q do |f| %> 
 <%= search_form_for @q do |f| %>
@@ -22,20 +22,21 @@
 
   <li>
     <%= f.label :ranking, t('Wine.ranking') %>
-    <%= f.select :ranking_eq, [["無評価", 0], ["残念", 1], ["今一", 2], ["まーまー", 3], ["美味しい！", 4], ["最高！", 5]] ,{include_blank: true} %>
+    <%= f.select :ranking_eq, [[t('No ranking'), 0], [t('Never again'), 1], [t('Not great'), 2], [t('Table wine'), 3], [t('Good!'), 4], [t('Excellent!'), 5]] ,{include_blank: true} %>
   </li>  
 
     <li>
+      <%= f.label :label %>
       <% Label.all.each do |label| %>
         <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
         <label><%= label.name %></label>
       <% end %>
     </li>
 
-    <%= f.submit "検索" %>
+    <%= f.submit t('Search') %>
 
     <li>
-    <%= link_to "最新投稿から閲覧", wines_path(sort: "true") %>
+    <%= link_to t('List from the latest'), wines_path(sort: "true") %>
     </li>
   </ul>
 <% end %>
@@ -82,15 +83,16 @@
         </td>
       
          <% if current_user.present? %>
-            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td> 
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to t('Show'), wine_path(wine.id) %></button></td> 
           <% if wine.user_id == current_user.id %>
               
-              <td><button type="button" class="btn btn-outline-success btn-xs"><%= link_to "編集", edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
-              <td><button type="button" class="btn btn-outline-danger btn-xs"><%= link_to '削除', wine_path(wine.id), method: :delete  %></button></td>
+              <td><button type="button" class="btn btn-outline-success btn-xs"><%= link_to t('Edit'), edit_wine_path(wine.id), data: { confirm: '本当に編集していいですか？' } %></button></td>
+              <td><button type="button" class="btn btn-outline-danger btn-xs"><%= link_to t('Delete'), wine_path(wine.id), method: :delete %></button></td>
+              <%# <>< type="button" class="btn btn-outline-danger btn-xs"><%= link_to t('Delete'), wine_path(wine.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
               
           <% end %>
           <% else %> 
-            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to '詳細確認', wine_path(wine.id) %></button></td>
+            <td><button type="button" class="btn btn-outline-primary btn-xs"><%= link_to t('Show'), wine_path(wine.id) %></button></td>
         <% end %>
 
       </tr>
