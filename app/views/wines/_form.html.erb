@@ -18,7 +18,7 @@
 
   <div class="wine_price">
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, min: 0 %>
   </div>
 
   <div class="wine_kind">

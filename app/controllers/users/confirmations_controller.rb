@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  # def after_confirmation_path_for(resource_name, resource)
+  #   sign_in(resource)
+  #   wines_path
+  # end
+
+
   # GET /resource/confirmation/new
   # def new
   #   super
@@ -12,9 +18,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-  # def show
-  #   super
-  # end
+  def show
+    # super do |resource|
+    #   sing_in(resource)
+    # end  
+  end
 
   # protected
 

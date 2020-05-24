@@ -16,8 +16,8 @@
     <%= f.search_field :kind_cont %>
 
     <%= f.label :price, t('Wine.price') %>
-    <%= f.number_field :price_gteq %> <%= t('Wine.yen or higher') %>
-    <%= f.number_field :price_lt %> <%= t('Wine.yen, less than') %>
+    <%= f.number_field :price_gteq, min: 0 %> <%= t('Wine.yen or higher') %>
+    <%= f.number_field :price_lt, min: 0  %> <%= t('Wine.yen, less than') %>
   </li> 
 
   <li>
