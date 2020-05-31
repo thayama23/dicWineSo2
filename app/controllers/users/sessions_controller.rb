@@ -4,9 +4,9 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   protected
  
-  def after_inactive_sign_up_path_for(resource)
-    wines_path
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   wines_path
+  # end
 
   # GET /resource/sign_in
   # def new

@@ -27,7 +27,7 @@
   - [ ] ワイン詳細
     - [ ] ワインテーブルにある程度添い、詳細を閲覧
     - [ ] ワイン、お気に入り登録・解除
-    - [ ] 他ユーザのコメント・５段階ランク付け可能
+    - [ ] 他ユーザのコメント可能
 - [ ] 検索機能
   - [ ] キーワードであいまい検索
   - [ ] タグでも検索可能
@@ -73,5 +73,5 @@ https://docs.google.com/document/d/e/2PACX-1vT96j6JrP8uKNGbRXSMGzVrqzorvfvmXSCpe
 - launchy
 - capybara
 - webdrivers
-- cancancan #追加申請
-- rails_admin #追加申請
+- cancancan
+- rails_admin 
